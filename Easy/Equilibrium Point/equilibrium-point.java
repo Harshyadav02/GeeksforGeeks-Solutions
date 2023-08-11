@@ -1,57 +1,20 @@
-//{ Driver Code Starts
-import java.io.*;
-import java.util.*;
-import java.util.stream.*;
+class Equilibrium_Point{
 
-class Main {
-
-    public static void main(String[] args) throws IOException {
-        BufferedReader br =
-            new BufferedReader(new InputStreamReader(System.in));
-        int t =
-            Integer.parseInt(br.readLine().trim()); // Inputting the testcases
-        while (t-- > 0) {
-            
-            //taking input n
-            int n = Integer.parseInt(br.readLine().trim());
-            long arr[] = new long[n];
-            String inputLine[] = br.readLine().trim().split(" ");
-            
-            //adding elements to the array
-            for (int i = 0; i < n; i++) {
-                arr[i] = Long.parseLong(inputLine[i]);
-            }
-
-            Solution ob = new Solution();
-            
-            //calling equilibriumPoint() function
-            System.out.println(ob.equilibriumPoint(arr, n));
-        }
-    }
-}
-// } Driver Code Ends
-
-
-class Solution {
-
-    
-    // a: input array
-    // n: size of array
-    // Function to find equilibrium point in the array.
-        public static int equilibriumPoint(long arr[], int n) {
-
+        //Function to find equilibrium point in the array.
         
+        public static int Finding_Equilibrium_Point(long array[], int size_of_array) {
 
+        // leftSum will track left side sum of array    
         long leftSum = 0;
-        long totalSum = 0;
+        long totalSum = 0;  // Total sum of array
         
-        for(long x: arr){
-            totalSum += x;
+        for(long new_array: array){
+            totalSum += new_array;
         }
 
-        for(int i = 0; i<arr.length; i++){
+        for(int i = 0; i < array.length; i++){
 
-            long rightSum = totalSum - leftSum - arr[i];
+            long rightSum = totalSum - leftSum - array[i];
 
             if(leftSum == rightSum){
 
@@ -59,10 +22,17 @@ class Solution {
             }
             else{
 
-                leftSum = leftSum +arr[i];
+                leftSum = leftSum +array[i];
             }
         }
         return -1;
        
+    }
+
+    public static void main(String[] args) {
+        
+        long arr[] = {1,3,5,2,2};
+        int size_of_array = 5;
+        System.out.println(Finding_Equilibrium_Point(arr,size_of_array));  // output 3 (5 is the equ point)
     }
 }
