@@ -1,45 +1,10 @@
-//{ Driver Code Starts
-//Initial Template for Java
-
 import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-class GFG {
-	public static void main(String[] args) throws IOException
-	{
-	        BufferedReader br =
-            new BufferedReader(new InputStreamReader(System.in));
-            PrintWriter ot = new  PrintWriter(System.out);
-        int t =
-            Integer.parseInt(br.readLine().trim()); // Inputting the testcases
-        while(t-->0)
-        {
-            int n = Integer.parseInt(br.readLine().trim());
-            int a[] = new int[(int)(n)];
-            String inputLine[] = br.readLine().trim().split(" ");
-            for (int i = 0; i < n; i++) {
-                a[i] = Integer.parseInt(inputLine[i]);
-            }
-            
-            Solution obj = new Solution();
-            obj.segregateElements(a, n);
-            
-            for(int i=0;i<n;i++)
-            ot.print(a[i]+" ");
-            
-            ot.println();
-        }
-        ot.close();
-	}
-}
-
-// } Driver Code Ends
-
-
 //User function Template for Java
-
-class Solution {
+// n represent the array length 
+class Move_All_Negative_Elements_To_End {
     
     public void segregateElements(int arr[], int n)
     {
@@ -58,7 +23,7 @@ class Solution {
                 
             }
         }
-        
+        // if all element in array are postive or negative 
         if(extra_space_pointer == n || extra_space_pointer==0){
             return ;
         }
@@ -80,5 +45,12 @@ class Solution {
         for(int i = 0; i<n;i++){
             arr[i] = extra_space[i] ;
         }
+    }
+	public static void main(String[] args) {
+	        int arr[] = {1, -1, 3, 2, -7, -5, 11, 6 };
+	        segregateElements(arr, arr.length);
+		
+		// converting all array elemnts to string
+        	System.out.println(Arrays.toString(arr));
     }
 }
